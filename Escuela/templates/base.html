@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ settings.PROJECT_NAME }} - {{ settings.PROJECT_TITLE}} ({{ settings.PROJECT_VERSION }})</title>
+
+        {% include "boostrap.html" %}
+        
+        {% block others_css %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <!-- navbar -->
+        {% block navbar %}
+            {% include "navbar.html" %}
+        {% endblock %}
+        
+        <!-- main content -->
+        <main role="main" class="container-fluid">      
+        {% block content %}
+        {% endblock %}
+
+        </main>
+        
+
+    </body>
+</html>

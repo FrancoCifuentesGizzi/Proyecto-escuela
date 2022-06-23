@@ -4,7 +4,9 @@
 {% endblock %}
 
 {% block content %}
+
 <p></p>
+
 <div class="row justify-content-center">
     <div class="col-4">
         {% if form.errors %}
@@ -31,7 +33,7 @@
                 {% csrf_token %}
                 
                 <div class="mb-3 mt-3">
-                    <label for="id_username" class="form-label">Usuario</label>
+                    <label for="id_username" class="form-label">Rut</label>
                     <input type="text" class="form-control" autofocus autocapitalize="none" 
                         autocomplete="username" maxlength="150" required id="id_username" 
                         name="username">
@@ -56,14 +58,17 @@
             <div class="card-body">
                 <p>superuser: Administración total (interfaz admin Django).</p>
                 <ul>
-                    <li>usuario: <b>admin@admin.cl</b> clave: <b>admin</b></li>
+                    <li>Rut: <b>20171208-4</b> clave: <b>123</b></li>
                 </ul>
-                <p>Investigador: Gestiona sus publicaciones.</p>
+                <p>Profesor Jefe</p>
                 <ul>
-                    <li>usuario: <b>avaldes@utalca.cl</b> clave: <b>12345678#</b></li>
                     <li>usuario: <b>fduran@utalca.cl</b> clave: <b>12345678#</b></li>
                 </ul>
-                <p>Director: Ve estadísticas y resportes. No tiene publicaciones. Gestiona Revistas e Idiomas.</p>
+                <p>Profesor de Asignatura</p>
+                <ul>
+                    <li>usuario: <b>avaldes@utalca.cl</b> clave: <b>12345678#</b></li>
+                </ul>
+                <p>Apoderado</p>
                 <ul>
                     <li>usuario: <b>gnunez@utalca.cl</b> clave: <b>12345678#</b></li>
                 </ul>

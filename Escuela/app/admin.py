@@ -4,22 +4,17 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import UsuarioCreationForm, UsuarioChangeForm
-from .models import DETALLE_JEFATURA, Usuario, ALUMNO, CURSA, CURSO, ASIGNATURA, EVALUACION, DETALLE_EVALUACION, ACTIVIDAD, DETALLE_ACTIVIDAD
+from .models import DETALLE_JEFATURA, PROFESOR, Usuario, ALUMNO, CURSA, CURSO, ASIGNATURA, EVALUACION, DETALLE_EVALUACION, ACTIVIDAD, DETALLE_ACTIVIDAD
 
 class UsuarioAdmin(UserAdmin):
     add_form = UsuarioCreationForm
     form = UsuarioChangeForm
     model = Usuario
-    list_display = ['rut', 'first_name', 'last_name']
-
-
-
-
-
-
+    list_display = ['username', 'first_name', 'last_name']
 
 admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(ALUMNO)
+admin.site.register(PROFESOR)
 admin.site.register(CURSO)
 admin.site.register(CURSA)
 admin.site.register(ASIGNATURA)

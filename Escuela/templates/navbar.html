@@ -1,61 +1,45 @@
-<!-- static navbar -->
-<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-    <div class="container-fluid">
-        
-        <a class="navbar-brand " href="/"><i class="bi bi-house"></i> {{ settings.PROJECT_NAME }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            {% if user.is_authenticated %}
-                {% if user.groups.all.0|stringformat:"s" == "Investigador" %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/admin/app/publicacion/"><i class="bi bi-journal-text"></i> Publicaciones (admin)</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/publicaciones/"><i class="bi bi-journal-text"></i> Mis Publicaciones</a>
-                    </li>
-                    
-                {% elif user.groups.all.0|stringformat:"s" == "Director" %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" 
-                            role="button" data-bs-toggle="dropdown"><i class="bi bi-bar-chart"></i> Reportes</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Investigadores</a></li>
-                            <li><a class="dropdown-item" href="#">Publicaciones</a></li>
-                            <li><a class="dropdown-item" href="#">Revistas</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" 
-                            role="button" data-bs-toggle="dropdown"><i class="bi bi-gear"></i> Mantenedores (admin)</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/admin/app/idioma/">Idiomas</a></li>
-                            <li><a class="dropdown-item" href="/admin/app/revista/">Revistas</a></li>
-                        </ul>
-                    </li> 
-                {% endif %} 
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        | <i class="bi bi-person"></i> <b>{{ user.groups.all.0 }} - {{ user }}</b>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout'%}">
-                        <i class="bi bi-box-arrow-right"></i> Salir</a>
-                </li>
-                
-            {% else %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'login'%}?next={{request.path}}"><i class="bi bi-box-arrow-left"></i> Ingresar</a>
-                </li>
-            {% endif %} 
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href=" {% url 'home' %}"></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          {% if user.is_authenticated %}
+            {% if user.groups.all.0|stringformat:"s" == "Profesor" %}
+              <li><a class="nav-link scrollto" href="#about">Acerca</a></li>
+              <!-- <li><a class="nav-link scrollto" href="#services">Productos</a></li>
+              <li><a class="nav-link scrollto" href="#services">Cotizar</a></li> -->
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  |<i class="bi bi-person"></i> <b>{{ user.groups.all.0 }} - {{ user }}</b></a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}"><i class="bi bi-box-arrow-right"></i> Salir</a></li>
+            
+            {% elif user.groups.all.0|stringformat:"s" == "Apoderado" %}
+              <li class="nav-item active">
+                <a class="nav-link scrollto" href="/app/productos"> Alumno </a></li>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link scrollto" href="#services">Acerca</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                   <i class="bi bi-person"></i> <b>{{ user.groups.all.0 }} - {{ user }}</b></a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}">
+                <i class="bi bi-box-arrow-right"></i> Salir</a></li>
+
+            {% endif %}
+          {% else %}
+            <li><a class="nav-link scrollto" href="#about">Acerca</a></li>           
+            {% endif %}  
         </ul>
-        </div>
+      </nav>
+      <!-- .navbar -->
     </div>
+  </header>
+
 </nav>

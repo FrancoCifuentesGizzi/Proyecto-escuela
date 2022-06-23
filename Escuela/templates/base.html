@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ settings.PROJECT_NAME }} - {{ settings.PROJECT_TITLE}} ({{ settings.PROJECT_VERSION }})</title>
 
-        {% include "head_css.html" %}
+        {% include "boostrap.html" %}
         
         {% block others_css %}
         {% endblock %}
@@ -18,35 +18,12 @@
         {% endblock %}
         
         <!-- main content -->
-        <main role="main" class="container-fluid">
-
-        {% if messages %}
-            <p></p>
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-            {% for message in messages %}
-                <strong>{{ message }}</strong><br>
-            {% endfor %}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endif %}
-        
+        <main role="main" class="container-fluid">      
         {% block content %}
         {% endblock %}
 
         </main>
+        
 
-        <!-- footer -->
-        {% block footer %}
-        <p></p>
-        <hr/>
-        <div class="text-center">
-            @{{ settings.PROJECT_NAME }} - {{ settings.PROJECT_TITLE}} ({{ settings.PROJECT_VERSION }})
-        </div>
-        {% endblock %}
-
-        {% include "javascript.html" %}
-
-        {% block others_js %}
-        {% endblock %}
     </body>
 </html>
